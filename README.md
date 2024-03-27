@@ -1,49 +1,55 @@
 # IoT-Assignment-3
 
-# Virtual Environmental Sensor System
+## Description
 
-This repository contains the Python script and related documentation for a virtual environmental sensor system designed for the CIS600 Internet of Things Application Development course.
-
-## Overview
-
-The purpose of this system is to simulate an IoT environment where temperature, humidity, and CO2 levels are monitored. The script generates random sensor data within specified ranges and publishes it to a cloud-based IoT platform using MQTT protocol.
-
-## Features
-
-- Simulates temperature, humidity, and CO2 sensors.
-- Sends data to the ThingsBoard platform using MQTT.
-- Generates and publishes data every minute.
+The system emulates an environmental station by generating random virtual sensor readings for temperature, humidity, and CO2 levels. It's built with Python and utilizes the MQTT protocol to communicate with the ThingSpeak platform for data visualization.
 
 ## Prerequisites
 
-Before running this script, ensure you have the following installed:
-- Python 3.6 or higher
-- Paho-MQTT Python package
+Ensure you have the following before starting:
+- Python 3.x installed on your machine.
+- An active Wi-Fi connection.
+- A configured ThingSpeak channel for MQTT.
 
 ## Installation
 
-Clone this repository to your local machine using:
-https://github.com/ajdesai2208/IoT-Assignment-3.git
+To set up the project locally, clone the repository using the following command:
 
-## Usage
+git clone https://github.com/ajaydesai2208
 
-To run the script, navigate to the cloned directory and execute:
+Navigate to the project directory:
 
-python Device_Deployment_Code_Assignment_3.py
-
+cd IoT-Assignment-3
 
 ## Configuration
 
-You will need to set up a device on the ThingsBoard platform and obtain an access token. Replace the `username` variable in the script with your device's access token.
+Update the following variables in the main.py script according to your setup:
+
+- WIFI_SSID with your Wi-Fi network name.
+- WIFI_PASSWORD with your Wi-Fi password. Leave this blank if you are connecting to an open network.
+- MQTT credentials (mqtt_client_id, mqtt_user, mqtt_password) and topics (mqtt_topic_temperature, mqtt_topic_humidity, mqtt_topic_co2) as per your ThingSpeak channel configuration.
+
+## Running the System
+Execute the script with Python by running:
+
+python main.py
+Upon running, the system will start generating and publishing sensor data to the MQTT broker.
+
+## Data Simulation
+The script generates random data within the following ranges:
+
+- Temperature: -50°C to 50°C
+- Humidity: 0% to 100%
+- CO2 Levels: 300ppm to 2000ppm
+
+## MQTT Broker Details
+- Server: mqtt3.thingspeak.com
+- Port: 1883
 
 ## Output
+The console will display output in the following format after each data publish:
 
-The script will output the data being sent to the MQTT broker in the terminal. It will look something like this:
+Connected to Wi-Fi
+Published: Temperature=X°C, Humidity=Y%, CO2=Zppm
 
-publish topic v1/devices/me/telemetry data out= {"temperature":"22°C", "humidity":"58%", "CO2":"450 ppm"}
-
-
-## Visualization
-
-You can visualize the sensor data on the ThingsBoard dashboard. Make sure to configure the dashboard widgets to display temperature, humidity, and CO2 data.
 
