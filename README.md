@@ -20,6 +20,11 @@ Before running this script, ensure you have the following installed:
 - Python 3.6 or higher
 - Paho-MQTT Python package
 
+## Installation
+
+Clone this repository to your local machine using:
+https://github.com/ajdesai2208/IoT-Assignment-3.git
+
 ## Usage
 
 To run the script, navigate to the cloned directory and execute:
