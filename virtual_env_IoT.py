@@ -24,7 +24,7 @@ def generate_sensor_data():
     co2 = urandom.uniform(300, 2000)
     return temperature, humidity, co2
 
-# To publish data
+# Publishing data
 def publish_to_thingspeak(temperature, humidity, co2):
     client = MQTTClient(mqtt_client_id, mqtt_server, user=mqtt_user, password=mqtt_password)
     client.connect()
@@ -33,7 +33,7 @@ def publish_to_thingspeak(temperature, humidity, co2):
     client.publish(mqtt_topic_co2, str(co2))
     client.disconnect()
 
-# Wi-Fi connection
+# Establishing Wi-Fi connection
 sta_if = network.WLAN(network.STA_IF)
 sta_if.active(True)
 sta_if.connect(WIFI_SSID, WIFI_PASSWORD)
@@ -44,7 +44,7 @@ while not sta_if.isconnected():
 
 print("Connected to Wi-Fi")
 
-# To publish sensor data
+# Publishing sensor data to ThingSpeak
 while True:
     temperature, humidity, co2 = generate_sensor_data()
     publish_to_thingspeak(temperature, humidity, co2)
